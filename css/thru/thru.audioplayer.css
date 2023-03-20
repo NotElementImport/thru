@@ -1,0 +1,380 @@
+audioplayer {
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    background: white;
+    border-radius: 0.5em;
+    display: flex;
+    isolation: isolate;
+    flex-direction: column;
+    max-width: 370px;
+    min-height: 200px;
+    max-height: 370px;
+    border: solid 1px lightblue;
+    margin-bottom: 0.4em;
+}
+audioplayer div.info {
+    padding: 1em 1em;
+    flex: 100px 0 0;
+    display: flex;
+    flex-direction: row;
+    backdrop-filter: blur(12px);
+    align-items: end;
+    background: #979797;
+    box-shadow: inset 0px -5px 12px #888888;
+}
+audioplayer div.info div.picture {
+    background: #e0e0e0;
+    flex: 0 0 5em;
+    width: 5em;
+    border-radius: 0.3em;
+    height: 5em;
+    box-shadow: 0px 0px 6px #818181;
+}
+audioplayer div.info div.title {
+    height: 5em;
+    color: #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    margin-left: 1em;
+    line-height: 1.5;
+    text-shadow: 0px 1px 6px #818181;
+    font-family: Arial, Helvetica, sans-serif;
+}
+audioplayer div.info div.title span::selection {
+    background-color: transparent;
+    border-radius: 0.3em;
+    text-shadow: 1px -1px 0px #818181, -1px 1px 0px #818181, 2px 2px 0px #818181, -2px -2px 0px #818181, 0px 0px 12px #818181;
+    color: black;
+}
+audioplayer div.info div.title span {
+    font-size: 12px;
+}
+audioplayer div.info div.title span:first-child {
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+}
+audioplayer div.info i {
+    position: absolute;
+    right: 0.4em;
+    bottom: 0.2em;
+    font-size: 12px;
+    font-style: normal;
+    user-select: none;
+    pointer-events: none;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffffa2;
+}
+audioplayer div.timeline {
+    flex: 8px 0 0;
+    background-color: #727272;
+    border-bottom: solid lightblue 1px;
+    cursor: pointer;
+    transition: flex 0.3s ease-in-out;
+}
+audioplayer div.timeline div {
+    height: 100%;
+    transition: width 0.4s ease-in-out;
+    pointer-events: none;
+    background: dodgerblue;
+    width: 10%;
+}
+audioplayer.disable div.timeline:active {
+    background: #f0808085;
+}
+audioplayer div.controls {
+    flex: 1 1;
+    display: flex;
+    align-items: center;
+    padding-inline: 8px;
+    padding-block: 3px;
+}
+audioplayer div.controls button {
+    width: 35px;
+    font-family: sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    height: 35px;
+    border-radius: 45px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    margin-left: 0.5em;
+    border: solid 1px lightblue;
+    transition: background-color 0.1s ease-in-out;
+    transition-property: background-color, outline;
+    outline: transparent solid 1px;
+}
+audioplayer div.controls button:first-child {
+    margin-left: unset !important;
+}
+audioplayer div.controls button:active {
+    outline: #1e8fff3f solid 4px;
+}
+audioplayer.disable div.controls button:active {
+    outline: #ff401e3f solid 4px;
+    border: lightcoral 1px solid;
+}
+audioplayer div.controls button:hover {
+    background-color: #f7f7f7;
+}
+audioplayer div.controls button.play::after {
+    color: white;
+    content: "\025B6";
+}
+audioplayer div.controls button.play {
+    width: 45px;
+    height: 45px;
+    background-color: dodgerblue;
+}
+audioplayer div.controls button.lastSong::after {
+    font: var(--fa-font-solid);
+    content: "\f04a"; /*1f50a  1f508*/
+    font-size: 14px;
+    color: gray;
+}
+audioplayer div.controls button.nextSong::after {
+    font: var(--fa-font-solid);
+    content: "\f04e"; /*1f50a  1f508*/
+    font-size: 14px;
+    color: gray;
+}
+audioplayer div.controls button.stop::after {
+    box-sizing: border-box;
+    content: " ";
+    position: relative;
+    display: block;
+    transform: scale(1) translateX();
+    width: 10px;
+    height: 10px;
+    background: gray;
+    border-radius: 2px;
+}
+audioplayer div.controls button.loop {
+    margin-left: auto;
+    color: gray;
+}
+audioplayer div.controls button.loop::after {
+    font: var(--fa-font-solid);
+    content: "\f363"; /*1f50a  1f508*/
+    font-size: 16px;
+}
+audioplayer div.controls button.loop[enable=true] {
+    background-color: dodgerblue;
+    color: white !important;
+}
+audioplayer div.controls button.volume::after {
+    font: var(--fa-font-solid);
+    content: "\f028"; /*1f50a  1f508*/
+    font-size: 14px;
+    color: gray;
+}
+audioplayer div.controls button.volume.muted::after {
+    font: var(--fa-font-solid);
+    content: "\f026"; /*1f50a  1f508*/
+    font-size: 14px;
+    color: gray;
+}
+audioplayer div.controls button.pause {
+    width: 45px;
+    height: 45px;
+}
+audioplayer div.controls button.pause::after {
+    color: dodgerblue;
+    box-sizing: border-box;
+    content: " ";
+    position: relative;
+    display: block;
+    transform: scale(1);
+    width: 8px;
+    height: 10px;
+    border-left: 3px solid;
+    border-right: 3px solid;
+    border-radius: 2px;
+}
+audioplayer div.playlist {
+    border-top: lightblue 1px solid;
+    padding-block: 1px;
+    padding-block-end: 5px;
+    background-color: #f7f7f7;
+    display: flex;
+    overflow-y: auto;
+    isolation: isolate;
+    flex-direction: column;
+    box-shadow: inset 0px 2px 12px #0000004f;
+    z-index: 0;
+}
+audioplayer div.playlist::-webkit-scrollbar {
+    appearance: none;
+    background: white;
+    z-index: 1;
+    width: 9px;
+    transition: background-color 0.1s ease-in-out;
+}
+audioplayer div.playlist::-webkit-scrollbar-thumb {
+    background: lightgray;
+    border-radius: 5px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+    margin: 1px;
+}
+audioplayer div.playlist button {
+    z-index: -1;
+    cursor: pointer;
+    border: none;
+    background-color: white;
+    margin-top: 2px;
+    padding: 2px;
+    padding-block: 9px;
+    color: gray;
+    padding-left: 8px;
+    padding-right: 8px;
+    text-align: left;
+    box-shadow: 0px 0px 2px #d1d1d1;
+}
+audioplayer div.playlist button:hover {
+    background-color: #f7f7f7;
+}
+@media (max-width : 500px) {
+    audioplayer {
+        width: 100%;
+        max-width: unset;
+        height: 90vh;
+        max-height: unset;
+    }
+    audioplayer div.info {
+        flex: 200px 0 0;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    audioplayer div.info div.picture {
+        width: 10em;
+        height: 10em;
+        flex: 0 0 10em;
+    }
+    audioplayer div.info div.title {
+        height: unset;
+        margin-top: 0.34em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: unset;
+    }
+    audioplayer div.controls
+    {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        padding-block: 1.5em;
+    }
+    audioplayer div.controls button {
+        margin-left: 2em;
+        width: 45px;
+        height: 45px;
+    }
+    audioplayer div.controls button:first-child {
+        margin-left: unset !important;
+        width: 45px;
+        height: 45px;
+    }
+    audioplayer div.controls button:not(button:nth-child(6)) {
+        order: 1;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    audioplayer div.controls button:nth-child(6) {
+        margin-right: auto;
+        margin-left: auto;
+    }
+    audioplayer div.controls button:first-child {
+        margin-right: auto !important;
+        margin-left: auto !important;
+    }
+    audioplayer div.info {
+        order: 0;
+        flex: 1 1;
+    }
+    audioplayer div.playlist {
+        order: 1;
+        flex: 1 1;
+    }
+    audioplayer div.timeline {
+        order: 2;
+    }
+    audioplayer div.controls {
+        flex: 0 0 1.5em;
+        order: 2;
+    }
+    audioplayer div.controls.extend {
+        flex: 0 0 4.5em;
+        order: 2;
+    }
+    audioplayer div.controls.extend button:not(button:nth-child(4)) {
+        order: 1;
+        margin-right: auto;
+    }
+    audioplayer div.controls.extend button:nth-child(4) {
+        order: 0;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    audioplayer div.controls.extend button:nth-child(3) {
+        order: 0;
+        margin-right: left;
+    }
+    audioplayer[compact] div.controls button.loop {
+        display: none;
+    }
+    audioplayer[compact] div.controls button.volume {
+        display: none;
+    }
+}
+audioplayer[compact] {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: unset;
+    min-height: 86px;
+    height: unset;
+}
+audioplayer[compact] div.controls div.timeline {
+    height: 8px;
+    margin-left: 8px;
+    margin-right: 8px;
+    flex: 1 1;
+}
+audioplayer[compact] div.info {
+    flex: 0 0 86px;
+    padding: 0.3em;
+}
+audioplayer[compact] div.controls div.timeline {
+    position: relative;
+}
+audioplayer[compact] div.controls div.timeline div.title {
+    position: absolute;
+    bottom: 320%;
+    font-family: Arial, Helvetica, sans-serif;
+    width: unset;
+    background: transparent;
+}
+audioplayer[compact] div.controls div.timeline div.title span {
+    color: #aeaeae;
+}
+audioplayer[compact] div.controls div.timeline div.title span:first-child {
+    font-weight: bold;
+    color: gray;
+}
+audioplayer[compact] div.controls div.timeline div.title span:first-child::after {
+    content: " - ";
+}
+audioplayer[compact] div.controls div.timeline i {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #aeaeae;
+    position: absolute;
+    top: 210%;
+}
