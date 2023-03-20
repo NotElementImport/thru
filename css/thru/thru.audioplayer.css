@@ -2,7 +2,7 @@ audioplayer {
     box-sizing: border-box;
     overflow: hidden;
     position: relative;
-    background: white;
+    background: var(--thru-bg);
     border-radius: 0.5em;
     display: flex;
     isolation: isolate;
@@ -10,7 +10,7 @@ audioplayer {
     max-width: 370px;
     min-height: 200px;
     max-height: 370px;
-    border: solid 1px lightblue;
+    border: solid 1px var(--thru-accent);
     margin-bottom: 0.4em;
 }
 audioplayer div.info {
@@ -20,8 +20,8 @@ audioplayer div.info {
     flex-direction: row;
     backdrop-filter: blur(12px);
     align-items: end;
-    background: #979797;
-    box-shadow: inset 0px -5px 12px #888888;
+    background: var(--thru-contrast-bg);
+    box-shadow: inset 0px -5px 12px #88888857;
 }
 audioplayer div.info div.picture {
     background: #e0e0e0;
@@ -69,7 +69,7 @@ audioplayer div.info i {
 audioplayer div.timeline {
     flex: 8px 0 0;
     background-color: #727272;
-    border-bottom: solid lightblue 1px;
+    border-bottom: solid var(--thru-accent) 1px;
     cursor: pointer;
     transition: flex 0.3s ease-in-out;
 }
@@ -77,7 +77,7 @@ audioplayer div.timeline div {
     height: 100%;
     transition: width 0.4s ease-in-out;
     pointer-events: none;
-    background: dodgerblue;
+    background: var(--thru-accent);
     width: 10%;
 }
 audioplayer.disable div.timeline:active {
@@ -100,9 +100,9 @@ audioplayer div.controls button {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: white;
+    background-color: var(--thru-bg);
     margin-left: 0.5em;
-    border: solid 1px lightblue;
+    border: solid 1px var(--thru-accent);
     transition: background-color 0.1s ease-in-out;
     transition-property: background-color, outline;
     outline: transparent solid 1px;
@@ -118,7 +118,7 @@ audioplayer.disable div.controls button:active {
     border: lightcoral 1px solid;
 }
 audioplayer div.controls button:hover {
-    background-color: #f7f7f7;
+    background-color: var(--thru-bg-hover);
 }
 audioplayer div.controls button.play::after {
     color: white;
@@ -127,7 +127,7 @@ audioplayer div.controls button.play::after {
 audioplayer div.controls button.play {
     width: 45px;
     height: 45px;
-    background-color: dodgerblue;
+    background-color: var(--thru-accent);;
 }
 audioplayer div.controls button.lastSong::after {
     font: var(--fa-font-solid);
@@ -162,8 +162,8 @@ audioplayer div.controls button.loop::after {
     font-size: 16px;
 }
 audioplayer div.controls button.loop[enable=true] {
-    background-color: dodgerblue;
-    color: white !important;
+    background-color: var(--thru-accent);;
+    color: var(--thru-bg) !important;
 }
 audioplayer div.controls button.volume::after {
     font: var(--fa-font-solid);
@@ -182,7 +182,7 @@ audioplayer div.controls button.pause {
     height: 45px;
 }
 audioplayer div.controls button.pause::after {
-    color: dodgerblue;
+    color: var(--thru-accent);
     box-sizing: border-box;
     content: " ";
     position: relative;
@@ -195,10 +195,10 @@ audioplayer div.controls button.pause::after {
     border-radius: 2px;
 }
 audioplayer div.playlist {
-    border-top: lightblue 1px solid;
+    border-top: var(--thru-accent) 1px solid;
     padding-block: 1px;
     padding-block-end: 5px;
-    background-color: #f7f7f7;
+    background-color: var(--thru-bg-hover);
     display: flex;
     overflow-y: auto;
     isolation: isolate;
@@ -224,18 +224,18 @@ audioplayer div.playlist button {
     z-index: -1;
     cursor: pointer;
     border: none;
-    background-color: white;
+    background-color: var(--thru-bg);
     margin-top: 2px;
     padding: 2px;
     padding-block: 9px;
-    color: gray;
+    color: var(--thru-text-main);
     padding-left: 8px;
     padding-right: 8px;
     text-align: left;
     box-shadow: 0px 0px 2px #d1d1d1;
 }
 audioplayer div.playlist button:hover {
-    background-color: #f7f7f7;
+    background-color: var(--thru-bg-hover);
 }
 @media (max-width : 500px) {
     audioplayer {
