@@ -79,7 +79,7 @@ export class ThruSearch{
             if(matchTags != null) {
                 matchTags.forEach((element) => {
                     queryVal = queryVal.replace(element, '');
-                    let normalView = element.match(/\B[a-z]([A-Z])/gm);
+                    let normalView = element.match(/\B[a-z]([A-Z0-9])/gm);
                     let text = element.replace('#', '');
                     if(normalView != null) {
                         normalView.forEach(sElement => {

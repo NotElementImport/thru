@@ -98,7 +98,7 @@ layout aside a:hover {
 layout aside a.active {
     color: var(--thru-accent);
 }
-button.nav-bar {
+button.nav-bar, button.nav-search {
     display: none;
 }
 @media (max-width : 500px) {
@@ -160,6 +160,25 @@ button.nav-bar {
     }
     button.nav-bar::after {
         content: "\f0c9";
+        font: var(--fa-font-solid)
+    }
+    button.nav-search {
+        display: flex;
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        top: 0.7em;
+        right: 0.7em;
+        width: 3.1em;
+        height: 3.1em;
+        color: var(--thru-accent);
+        background: var(--thru-bg);
+        border: solid 1px var(--thru-accent);
+        border-radius: 6px;
+        z-index: 10;
+    }
+    button.nav-search::after {
+        content: "\f002";
         font: var(--fa-font-solid)
     }
 }
